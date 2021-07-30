@@ -52,6 +52,18 @@ app.get("/employees", (req, res) => {
 	});
 });
 
+app.delete("/employees/:id", (req, res) => {
+	db.query(
+		"DELETE FROM employees WHERE id=?",
+		[req.params.id],
+		(err, result) => {
+			if (err) return res.send(err.message);
+
+			res.send("Employee deleted");
+		}
+	);
+});
+
 app.get("/", (req, res) => {
 	res.send("Employee Management System");
 });

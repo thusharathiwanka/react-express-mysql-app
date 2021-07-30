@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Form = () => {
-	const [employee, setEmployee] = useState({
-		name: "",
-		age: "",
-		country: "",
-		position: "",
-		wage: "",
-	});
+	const [employee, setEmployee] = useState({});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(employee);
 		const res = await axios.post(
 			"http://localhost:3001/employees/create",
 			employee
 		);
-		console.log(res);
+
+		if (res.status === 200) {
+			console.log("set");
+			setEmployee({});
+		}
 	};
 
 	return (

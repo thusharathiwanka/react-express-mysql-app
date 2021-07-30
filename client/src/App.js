@@ -1,4 +1,5 @@
 import Form from "./components/Form";
+import Table from "./components/Table";
 
 function App() {
 	return (
@@ -6,8 +7,9 @@ function App() {
 			<h1 className="text-4xl font-bold text-gray-800 text-center py-5">
 				Employee Management
 			</h1>
-			<div className="flex justify-center items-center w-full my-8">
+			<div className="flex flex-col justify-center items-center w-full my-8">
 				<Form />
+				<Table />
 			</div>
 		</div>
 	);
