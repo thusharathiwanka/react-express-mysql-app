@@ -52,6 +52,24 @@ app.get("/employees", (req, res) => {
 	});
 });
 
+app.put("/employees/:id", (req, res) => {
+	const name = req.body.name;
+	const age = req.body.age;
+	const country = req.body.country;
+	const position = req.body.position;
+	const wage = req.body.wage;
+
+	db.query(
+		"UPDATE employees SET name=? age=? country=? position=? wage=?  WHERE id=?",
+		[name, age, country, position, wage, req.params.id],
+		(err, result) => {
+			if (err) return res.send(err.message);
+
+			res.send("Employee updated");
+		}
+	);
+});
+
 app.delete("/employees/:id", (req, res) => {
 	db.query(
 		"DELETE FROM employees WHERE id=?",

@@ -15,8 +15,13 @@ const Table = () => {
 
 	const handleDelete = async (id) => {
 		const res = await axios.delete(`http://localhost:3001/employees/${id}`);
-		setEmployees([]);
+
+		if (res.statusText === "OK") {
+			setEmployees(employees.filter((employee) => employee.id !== id));
+		}
 	};
+
+	const handleUpdate = async (id) => {};
 
 	return (
 		<table className="bg-white mt-20 text-gray-700">
