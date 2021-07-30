@@ -1,16 +1,21 @@
 const express = require("express");
 const mysql = require("mysql");
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 mysql
 	.createConnection({
-		user: "root",
 		host: "localhost",
+		user: "root",
 		password: "",
 		database: "employee_system",
 	})
 	.connect((err) => {
 		if (err) {
+			console.log(err);
 			return console.log("something went wrong. db not connected");
 		}
 
