@@ -1,6 +1,6 @@
 import React from "react";
 
-const Row = ({ employee, handleDelete }) => {
+const Row = ({ employee, handleDelete, handleUpdate }) => {
 	return (
 		<tr>
 			<td className="border px-8 py-4">{employee.name}</td>
@@ -9,7 +9,10 @@ const Row = ({ employee, handleDelete }) => {
 			<td className="border px-8 py-4">{employee.position}</td>
 			<td className="border px-8 py-4">{employee.wage}</td>
 			<td className="border px-8 py-4">
-				<button className="bg-indigo-600 py-1 px-3 mx-2 text-white rounded-sm">
+				<button
+					className="bg-indigo-600 py-1 px-3 mx-2 text-white rounded-sm"
+					onClick={() => handleUpdate(employee)}
+				>
 					EDIT
 				</button>
 				<button

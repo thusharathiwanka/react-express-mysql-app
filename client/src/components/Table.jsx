@@ -1,9 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
 import Row from "./Row";
+import { EmployeeContext } from "../context/Context";
 
 const Table = () => {
 	const [employees, setEmployees] = useState([]);
+	const { employee, setEmployee } = useContext(EmployeeContext);
 
 	useEffect(() => {
 		const getEmployees = async () => {
@@ -21,7 +24,9 @@ const Table = () => {
 		}
 	};
 
-	const handleUpdate = async (id) => {};
+	const handleUpdate = async (employee) => {
+		setEmployee(employee);
+	};
 
 	return (
 		<table className="bg-white mt-20 text-gray-700">
@@ -40,6 +45,7 @@ const Table = () => {
 					<Row
 						employee={employee}
 						key={employee.id}
+						handleUpdate={handleUpdate}
 						handleDelete={handleDelete}
 					/>
 				);

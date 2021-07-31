@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 
+import { EmployeeContext } from "../context/Context";
+
 const Form = () => {
-	const [employee, setEmployee] = useState({});
+	const { employee, setEmployee } = useContext(EmployeeContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
